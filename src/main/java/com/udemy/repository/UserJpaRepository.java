@@ -18,5 +18,7 @@ public interface UserJpaRepository extends JpaRepository<User, Serializable> {
 	public abstract List<User> findByNameOrderByLastname(String name);
 	
 	public abstract List<User> findByNameAndLastname(String name, String lastname);
+	
+	public abstract User findByUsername(String username);
 
 }

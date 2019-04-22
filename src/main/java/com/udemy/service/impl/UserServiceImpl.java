@@ -14,7 +14,7 @@ import com.udemy.model.UserModel;
 import com.udemy.repository.UserJpaRepository;
 import com.udemy.service.UserService;
 
-@Service("userService")
+@Service("userServiceImpl")
 public class UserServiceImpl implements UserService {
 	
 	private static final Log LOG = LogFactory.getLog(UserServiceImpl.class);
