@@ -9,9 +9,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.udemy</groupId>
-	<artifactId>backendninja2</artifactId>
+	<artifactId>backendninja</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>backendninja2</name>
+	<name>backendninja</name>
 	<description>Este es el proyecto del curso</description>
 
 	<properties>
