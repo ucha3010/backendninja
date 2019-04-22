@@ -1,0 +1,18 @@
+spring:
+  banner:
+    location: classpath:templates/utilities/banner.txt # ubicación del banner al arrancar el servidor
+  datasource:
+    url: jdbc:mysql://localhost:3306/backendninja?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update # con esto comprueba que los entity se correspondan con las tablas, sino actualiza las tablas
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+        

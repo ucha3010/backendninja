@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Usuarios</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/css/style.css" media="screen"
+	type="text/css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+      <table class="table table-bordered">
+		<thead>
+			<tr>
+				<th><big>Id</big></th>
+				<th><big>Nombre</big></th>
+				<th><big>Apellido</big></th>
+				<th><big>Fecha de nacimiento</big></th>
+				<th><big>Rol</big></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="user : ${users}">
+				<td th:text="${user.userId}"></td>
+				<td th:text="${user.name}"></td>
+				<td th:text="${user.lastname}"></td>
+				<td th:text="${user.bithday}"></td>
+				<td th:text="${user.role}"></td>
+				<th>
+					<button class="btn btn-warning">
+              		<span class="glyphicon glyphicon-pencil" aria-hidden="true">Editar</span>
+              		</button>
+
+
+	              	<button type="button" class="btn btn-danger">
+	              	<span class="glyphicon glyphicon-remove" aria-hidden="true">Borrar</span>
+	              	</button>
+				</th>
+			</tr>
+		</tbody>
+	</table>
+	
+	<div th:if="${result == 1}" class="alert alert-success" role="alert">Agregado satisfactoriamente</div>
+	<div th:if="${result == 0}" class="alert alert-danger" role="alert">Error guardando contacto</div>
+	
+	<a href="#" th:href="@{/user/userform}">
+		<button class="btn btn-lg btn-primary btn-block" type="submit"><span class="glyphicon glyphicon-user" aria-hidden="true">Agregar usuario</span></button>
+	</a>
+	
+	</div>
+</body>
+</html>

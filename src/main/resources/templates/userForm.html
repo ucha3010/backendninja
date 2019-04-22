@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Formulario usuario</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/css/style.css" media="screen"
+	type="text/css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="jumbotron">
+		<div class="container">
+			<form action="#" th:action="@{/user/adduser}"
+				th:object="${userModel}" method="post">
+				<p>
+					Id: <input type="number" class="form-control" readonly="readonly"
+						th:field="*{userId}" />
+				</p>
+				<p>
+					Nombre: <input type="text" class="form-control" th:field="*{name}" />
+				</p>
+				<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+					color=red>Nombre con errores</p>
+				<p>
+					Apellido: <input type="text" class="form-control"
+						th:field="*{lastname}" />
+				</p>
+				<p th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"
+					color=red>Apellido con errores</p>
+				<!-- 				<p> -->
+				<!-- 					Fecha de nacimiento: <input type="datetime" class="form-control" -->
+				<!-- 						th:field="*{bithday}" /> -->
+				<!-- 				</p> -->
+				<!-- 				<p th:if="${#fields.hasErrors('bithday')}" th:errors="*{bithday}" -->
+				<!-- 					color=red>Fecha de nacimiento con errores</p> -->
+				<p>
+					Rol: <input type="text" class="form-control" th:field="*{role}" />
+				</p>
+				<p th:if="${#fields.hasErrors('role')}" th:errors="*{role}"
+					color=red>Rol con errores</p>
+				<p>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">
+						<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Aceptar
+					</button>
+				</p>
+			</form>
+			<a href="#" th:href="@{/user/listusers}">
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Cancelar
+				</button>
+			</a>
+		</div>
+	</div>
+</body>
+</html>
