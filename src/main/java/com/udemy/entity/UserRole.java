@@ -21,7 +21,7 @@ public class UserRole {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
 	private Integer userRoleId;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "username", nullable = false)
 	private User user;
 	

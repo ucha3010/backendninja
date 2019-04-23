@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import com.udemy.converter.UserConverter;
@@ -36,6 +37,7 @@ public class UserServiceImpl implements UserService {
 		return userModelList;
 	}
 
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@Override
 	public UserModel addUser(UserModel userModel) {
 		LOG.info("Servicio addUser");

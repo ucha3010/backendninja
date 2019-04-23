@@ -1,6 +1,10 @@
 package com.udemy.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import com.udemy.entity.UserRole;
 
 public class UserModel {
 
@@ -9,6 +13,10 @@ public class UserModel {
 	private String lastname;
 	private Date bithday;
 	private String role;
+	private String username;
+	private String password;
+	private boolean enabled;
+	private Set<UserRole> userRole = new HashSet<UserRole>();
 
 	public UserModel() {
 

@@ -3,6 +3,8 @@ package com.udemy.controller;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,7 @@ import com.udemy.model.UserModel;
 import com.udemy.service.UserService;
 
 @Controller
+@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
 @RequestMapping("/user")
 public class UserController {
 	
@@ -30,10 +33,15 @@ public class UserController {
 	public ModelAndView listAllUsers() {
 		LOG.info("Controlador " + "listAllUsers");
 		ModelAndView mav = new ModelAndView(USERS_LIST_VIEW);
+		
+		org.springframework.security.core.userdetails.User user;
+		user = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		mav.addObject("username", user.getUsername());
 		mav.addObject("users", userService.listAllUsers());
 		return mav;
 	}
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/userform")
 	public String userForm(@ModelAttribute(name = "userModel") UserModel userModel, Model model) {
 		LOG.info("Controlador " + "userForm" + " -- Parámetro: " + userModel + " - ");
